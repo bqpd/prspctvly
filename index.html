@@ -1,0 +1,155 @@
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+<style>
+
+body {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #dfe3ee;
+}
+
+#brand {
+  color: #3b5998;
+  font-size: 1.5em;
+}
+
+#logo {
+ margin: 0 auto;
+ text-align: center;
+}
+
+#brand h1 {
+  font-family: "Fredoka One", "Helvetica", sans-serif;
+  text-align: center;
+  font-size: 3em;
+  padding: none;
+}
+
+#brand h2 {
+  font-family: "Shadows Into Light", serif;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.input {
+  font-family: inherit;
+  border: none;
+  padding: none;
+  background-color: transparent;
+  color: #627AAD;
+  font-size: 1.5em;
+  text-decoration: underline;
+  padding: 0!important;
+  margin: 0!important;
+}
+
+#termdiv {
+  font-family: "Fredoka One", "Helvetica", sans-serif;
+  margin: 0 auto;
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+<div id="brand">
+<div id="logo"><img src="prspctvly.svg", width="75%"></div>
+
+<div id="termdiv">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; providing <input type="text" class="input", id="term" value="sleep" size=10
+onkeydown="if(event.keyCode === 13)
+             loadSearch()">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and <input type="text" class="input", id="term2" value="science" size=10
+onkeydown="if(event.keyCode === 13)
+             loadSearch2()">
+
+<h1> < prspctvly > </h1>
+<h2>"Let us program you effortlessly into maturity."</h2>
+
+</div>
+
+<div id="ytplayer"></div>
+<div id="ytplayer2"></div>
+
+</div>
+
+<script>
+var seed = 1,
+    random = function() {
+      var x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    }
+
+var loadSearch = function(term) {
+    term = document.getElementById('term').value
+    if (term !== '')
+      player.loadPlaylist({list:'ted talks '+term, listType:'search', startSeconds:30})
+    else
+      player2.stopVideo()
+  },
+  loadSearch2 = function(term) {
+    term = document.getElementById('term2').value
+    if (term !== '')
+      player2.loadPlaylist({list:'ted talks '+term, listType:'search', startSeconds:30})
+    else
+      player2.stopVideo()
+  }
+
+var speedbounce = function() {
+  currentSpeed = player.getPlaybackRate()
+  rand = random()
+
+  if (currentSpeed == 1.5) {
+    player.setPlaybackRate(0.5)
+    player2.setPlaybackRate(0.5)
+    setTimeout(speedbounce, 100*rand + 10)
+  }
+  else if (currentSpeed == 1.0) {
+    player.setPlaybackRate(1.5)
+    player2.setPlaybackRate(1.5)
+    setTimeout(speedbounce, 1000*rand + 10)
+  }
+  else {
+    player.setPlaybackRate(1)
+    player2.setPlaybackRate(1)
+    setTimeout(speedbounce, 5000*rand + 100)
+  }
+}
+
+  // Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+      height: '0',
+      width: '400',
+      videoId: 'QjlFqgRbICY',
+      events: {
+      }
+    });
+
+    player2 = new YT.Player('ytplayer2', {
+      height: '0',
+      width: '400',
+      videoId: 'QjlFqgRbICY',
+      events: {
+      }
+    });
+
+    setTimeout(loadSearch, 1000)
+    setTimeout(loadSearch2, 1000)
+    setTimeout(speedbounce, 1500)
+  }
+
+</script>
+</body>
+</html>
