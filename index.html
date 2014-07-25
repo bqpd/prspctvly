@@ -32,7 +32,7 @@ body {
 #brand h2 {
   font-family: "Shadows Into Light", serif;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1.2em;
 }
 
 .input {
@@ -71,7 +71,7 @@ onkeydown="if(event.keyCode === 13)
 from the sage sounds of TED
 
 <h1> < prspctvly > </h1>
-<h2>"Let us program you effortlessly into maturity."</h2>
+<h2>Let us program you effortlessly into maturity.</h2>
 
 </div>
 
@@ -114,12 +114,12 @@ var speedbounce = function() {
   else if (currentSpeed == 1.0) {
     player.setPlaybackRate(1.5)
     player2.setPlaybackRate(1.5)
-    setTimeout(speedbounce, 1000*rand + 10)
+    setTimeout(speedbounce, 1000*rand + 100)
   }
   else {
     player.setPlaybackRate(1)
     player2.setPlaybackRate(1)
-    setTimeout(speedbounce, 5000*rand + 100)
+    setTimeout(speedbounce, 1000*rand + 100)
   }
 }
 
