@@ -67,6 +67,8 @@ onkeydown="if(event.keyCode === 13)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and <input type="text" class="input", id="term2" value="science" size=10
 onkeydown="if(event.keyCode === 13)
              loadSearch2()">
+<br>
+from the sage sounds of TED
 
 <h1> < prspctvly > </h1>
 <h2>"Let us program you effortlessly into maturity."</h2>
@@ -90,7 +92,7 @@ var loadSearch = function(term) {
     if (term !== '')
       player.loadPlaylist({list:'ted talks '+term, listType:'search', startSeconds:30})
     else
-      player2.stopVideo()
+      player.stopVideo()
   },
   loadSearch2 = function(term) {
     term = document.getElementById('term2').value
